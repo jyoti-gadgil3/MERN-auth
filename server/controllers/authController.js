@@ -195,7 +195,7 @@ export const sendResetOtp = async (req, res) => {
     return res.json({ success: false, message: "Enter all required Details" });
   }
   try {
-    const user = await userModel.findOne(email);
+    const user = await userModel.findOne({email});
     if (!user) {
       return res.json({ success: false, message: "Invalid Credentials" }); //Instead of User not found
     }
@@ -235,7 +235,7 @@ export const resetPassword = async (req, res) => {
 
   try {
     
-    const user = await userModel.findOne(email);
+    const user = await userModel.findOne({email});
     if(!user){
         return res.json({ success: false, message: "Invalid Credentials" });
     }
